@@ -23,10 +23,10 @@ public class CustomerService {
     public CustomerService() {
      if (init) {
         
-        Accounts a1 = new Accounts(99901, "C", 101, 2550.65);
-        Accounts a2 = new Accounts(99902, "C", 102, 1400.26);
-        Accounts a3 = new Accounts(99911, "S", 101, 3000.21);
-        Accounts a4 = new Accounts(99912, "S", 102, 1800.12);
+        Accounts a1 = new Accounts(99901, "C", 1, 2550.65);
+        Accounts a2 = new Accounts(99902, "C", 1, 1400.26);
+        Accounts a3 = new Accounts(99911, "S", 2, 3000.21);
+        Accounts a4 = new Accounts(99912, "S", 2, 1800.12);
         
         acc.add(a1);
         acc.add(a2);
@@ -59,15 +59,64 @@ public class CustomerService {
         return list.get(id-1);
     }
     
+    //get all accounts - for testing
+    public List <Accounts> getAllAccounts(){
+        return acc;
+    }
+    
+    
+    //get all accounts for one customer
+//    public Accounts getAccountsByCustomerId(int id, int accId){
+//        Accounts a = new Accounts();
+//        for(Accounts q: getCustomer(id).getAccounts()){
+//            if (q.getAccId() == accId) {
+//                a = q;
+//        	}
+//            }
+//        
+//        return a;
+//    }
+    
+    // @Arezki: how to take the balance of the account from the Account object when querying Customer?
     public Accounts getBalanceOfAccount(int id, int accId) {
         Accounts a = new Accounts();
-        
+        double bal;
         for (Accounts q: getCustomer(id).getAccounts()) {
-        	if (q.getBalance() == accId) {
-        		a = q;
+        	if (q.getAccId() == accId) {
+                    a = q;
         	}
+                bal = a.getBalance();
+                
         }
         return a;
     }
     
+    //@Arezki: This should return all accounts by customers ID, but it only returning one.
+    public Accounts getAccountInCustomer(int id){
+        Accounts a = new Accounts();
+        for (Accounts q: getCustomer(id).getAccounts()){
+            if(q.getCustomerId() == id){
+                a = q;
+            }
+        }
+        return a;
+    }
+    //get customers by search terms
+    public List<Customer> getSearchCustomers(String email, String address, String name) {
+        List<Customer> matcheslist = new ArrayList<>();
+        
+        for (Customer q: getAllCustomers()) {
+            if ((email == null || q.getEmail().equals(email)) 
+            		&& (address == null || q.getAddress().equals(address))
+            		&& (name == null || q.getName().equals(name))) {
+               matcheslist.add(q);
+            }
+        }
+        return matcheslist;
+    }
+    
+    public List<Customer> getAllCustomersPaginated(int start, int size) {
+    	if (start-1 + size > list.size()) return new ArrayList<>();
+    	return list.subList(start-1, start-1 + size);
+    }
 }

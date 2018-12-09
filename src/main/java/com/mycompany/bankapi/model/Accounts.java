@@ -5,8 +5,6 @@
  */
 package com.mycompany.bankapi.model;
 
-import java.util.List;
-
 /**
  *
  * @author Maurice
@@ -17,7 +15,7 @@ public class Accounts {
     private String type;
     private int customerId;
     private double balance;
-    private List <Accounts> accounts;
+//    private List <Accounts> accounts;
     
     public Accounts(){
         
@@ -32,11 +30,11 @@ public class Accounts {
         
     }
     
-    public int getId() {
+    public int getAccId() {
         return accId;
     }
 
-    public void setId(int id) {
+    public void setAccId(int id) {
         this.accId = id;
     }
 
