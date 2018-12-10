@@ -6,10 +6,14 @@
 package com.mycompany.bankapi.resources;
 
 import com.mycompany.bankapi.model.Customer;
+import com.mycompany.bankapi.model.Transaction;
 import com.mycompany.bankapi.services.CustomerService;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import static javax.ws.rs.HttpMethod.PUT;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -38,10 +42,27 @@ public class CustomerResource {
     public Customer getCustomer(@PathParam("customerId") int id) {
         return cService.getCustomer(id);
     }
-//    @GET
-//    @Path("/{customerId}/accounts/{accountId}/balance")
-//	public Accounts getCustomer(@PathParam("customerId") int id, @PathParam("accountId") int accId) {
-//		return cService.getBalanceOfAccount(id, accId);
-//	}
     
+       
+   //get the transaction by id
+    @GET
+    @Path("{custId}/acc/{accId}/trans/{transId}")
+    public Transaction getTransaction(@PathParam("custId") int customerid,@PathParam("accId") int accountid,@PathParam("transId") int transid) {
+        return cService.getTransaction(customerid, accountid,transid);
+              
+    }
+     //create a transaction
+    @POST
+    @Path("{accId}/trans/{debit}")
+    public int postTransaction(Transaction debit){
+        
+       
+            if( debit.getType()!="debit"){
+             return 2;
+        }
+       
+            return 5;
+              
+    }
+   
 }

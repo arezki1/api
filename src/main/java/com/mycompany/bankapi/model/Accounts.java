@@ -6,48 +6,67 @@
 package com.mycompany.bankapi.model;
 
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Maurice
  */
+@XmlRootElement
 public class Accounts {
-    
-    private int accId;
-    private String type;
+    private int id;
+    private int accountNumber;
+    private int sortCode;
     private int customerId;
     private double balance;
-    private List <Accounts> accounts;
+    private List <Transaction> trans;
     
     public Accounts(){
         
     }
     
-    public Accounts(int accId, String type, int customerid, double balance){
-        
-        this.accId = accId;
-        this.type = type;
+    public Accounts(int id, int accountNumber, int sortCode, int customerid, double balance,List <Transaction> trans ){
+        this.id=id;
+        this.accountNumber = accountNumber;
+        this.sortCode = sortCode;
         this.customerId = customerid;
         this.balance = balance;
-        
-    }
-    
+        this.trans=trans;
+       }
+
     public int getId() {
-        return accId;
+        return id;
     }
 
     public void setId(int id) {
-        this.accId = id;
+        this.id = id;
     }
 
-    public String getType() {
-        return type;
+  
+    public List<Transaction> getTrans() {
+        return trans;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTrans(List<Transaction> trans) {
+        this.trans = trans;
     }
 
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public int getSortCode() {
+        return sortCode;
+    }
+
+    public void setSortCode(int sortCode) {
+        this.sortCode = sortCode;
+    }
+ 
     public int getCustomerId() {
         return customerId;
     }

@@ -5,20 +5,20 @@
  */
 package com.mycompany.bankapi.services;
 
-import com.mycompany.bankapi.model.Transaction;
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  *
  * @author aibsa
  */
 
-public class AccountsService {
-    public static List<Transaction> trans=new ArrayList<>();
- public double postAmount(double amount){
+public class TransactionService {
+    
+    AccountsService accss=new AccountsService();
+    
+    public double lodge(double transaction){
         
-    // trans.add(trans);
-        return 5.5;
+        return accss.postAmount(transaction);
     }
+    
 }

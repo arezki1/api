@@ -6,6 +6,7 @@
 package com.mycompany.bankapi.model;
 
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 
@@ -13,6 +14,7 @@ import java.util.List;
  *
  * @author Maurice
  */
+@XmlRootElement
 public class Customer {
     //Set variables
     private int id;

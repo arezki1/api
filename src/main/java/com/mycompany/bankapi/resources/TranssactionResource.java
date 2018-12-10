@@ -5,13 +5,13 @@
  */
 package com.mycompany.bankapi.resources;
 
-import com.mycompany.bankapi.model.Customer;
-import com.mycompany.bankapi.services.AccountsService;
-import java.util.List;
+import com.mycompany.bankapi.model.Message;
+import com.mycompany.bankapi.services.TransactionService;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -20,15 +20,18 @@ import javax.ws.rs.core.MediaType;
  * @author aibsa
  */
 
-@Path("/accounts")
+@Path("/trans")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class AccountsResource {
+public class TranssactionResource {
     
-    AccountsService accs = new AccountsService();
+    TransactionService transervice=new TransactionService();
+    
     @POST
-    @Path("/{putAmount}")
-     public double postAmount(double putAmount) {
-        return accs.postAmount(putAmount);
+    @Path("/withdraw")
+    public double getMessage(@PathParam("amount") double amount) {
+        
+        return transervice.lodge(amount);
     }
+    
 }

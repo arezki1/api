@@ -6,26 +6,44 @@
 package com.mycompany.bankapi.model;
 
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author aibsa
  */
+@XmlRootElement
 public class Transaction {
     
-    private String type;
+    private int transId;
     private String description;
+    private String type;
+    private double amount;
     private double postTransaction;
     private Date created;
     
     public Transaction(){
         
     }
-     public Transaction(String type, String description, double postTransaction){
+     public Transaction(int transId, String type, double amount,String description, double postTransaction){
         this.created=new Date();
+        this.transId=transId;
+        this.type=type;
+        this.amount=amount;
         this.description=description;
         this.postTransaction=postTransaction;
-        this.created=new Date();
+            }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getTransId() {
+        return transId;
+    }
+
+    public void setTransId(int tranId) {
+        this.transId = transId;
     }
 
     public String getType() {
@@ -36,8 +54,12 @@ public class Transaction {
         this.type = type;
     }
 
-    public String getDescription() {
-        return description;
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public void setDescription(String description) {
