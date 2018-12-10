@@ -95,5 +95,21 @@ public class CustomerService {
         }
         return a;
     }
+    //create a new customer
+    public Customer createCustomer(Customer c){
+        c.setId(list.size()+1);
+        list.add(c);
+        System.out.println("201 - resource created with path: /createcust/" + String.valueOf(c.getId()));
+	return c;
+    }
+    
+    //create an account
+    public Accounts createAccount(Accounts a){
+        a.setId(list.size()+1);
+        acc.add(a);
+        System.out.println("201 - resource created with path: /createacc/" + String.valueOf(a.getId()));
+        return a;
+        
+    }
     
 }
