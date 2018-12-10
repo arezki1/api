@@ -28,13 +28,14 @@ public class Customer {
         
     }
     
-    public Customer(int id, String name, String address, String email, String password, List<Accounts> accounts){
+    public Customer(int id, String name, String address, String email, String password, List <Accounts> accounts){
     
             this.id = id;
             this.name = name;
             this.address = address;
             this.email = email;
             this.password = password;
+            this.accounts = accounts;
     }
 
     public int getId() {

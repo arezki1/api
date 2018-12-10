@@ -53,15 +53,9 @@ public class CustomerResource {
     }
      //create a transaction
     @POST
-    @Path("{accId}/trans/{debit}")
-    public int postTransaction(Transaction debit){
-        
-       
-            if( debit.getType()!="debit"){
-             return 2;
-        }
-       
-            return 5;
+    @Path("/transaction1")
+    public Transaction postTransaction(Transaction trans){
+        return cService.postTransaction(trans);
               
     }
    

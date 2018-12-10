@@ -32,7 +32,8 @@ public class Accounts {
         this.customerId = customerid;
         this.balance = balance;
         this.trans=trans;
-       }
+        
+    }
 
     public int getId() {
         return id;
@@ -66,7 +67,9 @@ public class Accounts {
     public void setSortCode(int sortCode) {
         this.sortCode = sortCode;
     }
- 
+    
+
+
     public int getCustomerId() {
         return customerId;
     }
