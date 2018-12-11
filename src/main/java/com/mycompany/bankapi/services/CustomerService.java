@@ -37,11 +37,12 @@ public class CustomerService {
         list.add(c2);
         list.add(c3);
         
-    Transaction t1=new Transaction(1,"debit",25,"first withdrw",25.00);
-    Transaction t2=new Transaction(2,"debit",2,"second withdrw",2.00);
+        Transaction t1=new Transaction(1,"debit",1,25,"first withdrw",25.00);
+        Transaction t2=new Transaction(2,"debit",2,2,"second withdrw",2.00);
     
-    trans.add(t1);
-    trans.add(t2);
+    
+         trans.add(t1);
+         trans.add(t2);
         init = false;
      }
     }
@@ -77,6 +78,49 @@ public class CustomerService {
                     
         return t;
     }
+    
+          //handling the put transactions for debit - Arezki
+    public double putCredit(Transaction transaction){
+       
+        if(transaction.getAccountNumber()==getAccount(transaction.getAccountNumber()).getAccountNumber()){
+                 
+        try{
+                double balance=getAccount(transaction.getAccountNumber()).getBalance();
+                double newBalance=balance-transaction.getAmount();
+                getAccount(transaction.getAccountNumber()).setBalance(newBalance);
+
+                return newBalance;
+            }
+        
+        catch(Exception e){
+            e.getMessage();
+            }
+        } 
+        return 10.00;
+    }
+    
+    //handling the put transactions for debit
+    public double putDebit(Transaction transaction){
+       
+        if(transaction.getAccountNumber()==getAccount(transaction.getAccountNumber()).getAccountNumber()){
+                 
+        try{
+                double balance=getAccount(transaction.getAccountNumber()).getBalance();
+                double newBalance=balance+transaction.getAmount();
+                getAccount(transaction.getAccountNumber()).setBalance(newBalance);
+
+                return newBalance;
+            }
+        
+        catch(Exception e){
+            e.getMessage();
+            }
+        } 
+        return 10.00;
+    }
+
+    
+     
         //handling the post transactions
     public Transaction postTransaction(Transaction transaction){
         
@@ -104,12 +148,22 @@ public class CustomerService {
     }
     
     //create an account
-    public Accounts createAccount(Accounts a){
-        a.setId(list.size()+1);
-        acc.add(a);
-        System.out.println("201 - resource created with path: /createacc/" + String.valueOf(a.getId()));
+    public Accounts createAccount(Accounts a, int customerid){
+        Customer c = new Customer();
+        try{
+            if(getCustomer(customerid).getId()==customerid){
+                a.setId(list.size()+1);
+                acc.add(a);
+                System.out.println("201 - resource created with path: /createacc/" + String.valueOf(a.getId()));
+        
+            }
+        
+        }
+        catch(Exception e){
+        e.getMessage();
+        }
         return a;
         
     }
-    
+   
 }

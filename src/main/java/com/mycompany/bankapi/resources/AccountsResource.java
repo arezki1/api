@@ -29,6 +29,7 @@ public class AccountsResource {
     @POST
     @Path("/{putAmount}")
      public double postAmount(double putAmount) {
-        return accs.postAmount(putAmount);
+       // return accs.postAmount(putAmount);
+       return 2.5;
     }
 }

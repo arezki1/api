@@ -18,7 +18,8 @@ public class TransactionService {
     
     public double lodge(double transaction){
         
-        return accss.postAmount(transaction);
+       // return accss.postAmount(transaction);
+       return 2.5;
     }
     
 }

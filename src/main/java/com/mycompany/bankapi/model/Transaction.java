@@ -17,17 +17,19 @@ public class Transaction {
     
     private int transId;
     private String description;
+    private int accountNumber;
     private String type;
     private double amount;
     private double postTransaction;
     private Date created;
     
     public Transaction(){
-        
+       
     }
-     public Transaction(int transId, String type, double amount,String description, double postTransaction){
+     public Transaction(int transId, String type, int accountNumber,double amount,String description, double postTransaction){
         this.created=new Date();
         this.transId=transId;
+        this.accountNumber=accountNumber;
         this.type=type;
         this.amount=amount;
         this.description=description;
@@ -48,6 +50,14 @@ public class Transaction {
 
     public String getType() {
         return type;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public void setType(String type) {

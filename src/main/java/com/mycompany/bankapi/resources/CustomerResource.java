@@ -13,6 +13,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -50,12 +51,21 @@ public class CustomerResource {
         return cService.getTransaction(customerid, accountid,transid);
               
     }
-     //create a transaction
-    @POST
-    @Path("/transaction1")
-    public Transaction postTransaction(Transaction trans){
-        return cService.postTransaction(trans);
-              
+       //create a transaction
+    @PUT
+    @Path("transaction")
+    public double postTransaction(Transaction debit){
+               
+            if( debit.getType().equals("debit")){
+             return cService.putDebit(debit);
+        }
+            
+            else if( debit.getType().equals("credit")){
+             return cService.putCredit(debit);
+        }
+       
+            return 5.7;
+             
     }
     //create a customer
     @POST
@@ -65,9 +75,9 @@ public class CustomerResource {
     } 
     //create an account
     @POST
-    @Path("/createacc")
-    public Accounts postAccount(Accounts a){
-      return cService.createAccount(a);
+    @Path("{custId}/createacc")
+    public Accounts postAccount(@PathParam("custId")int id, Accounts a){
+      return cService.createAccount(a, id);
     }
    
 }
