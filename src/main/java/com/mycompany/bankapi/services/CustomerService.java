@@ -48,15 +48,15 @@ public class CustomerService {
             init = false;
         }
     }
-
+    //service to return all customers
     public List<Customer> getAllCustomers() {
         return list;
     }
-
+    //servie to return a single customer
     public Customer getCustomer(int id) {
         return list.get(id - 1);
     }
-
+//    service to return a single account
     public Accounts getAccount(int id) {
         return acc.get(id - 1);
     }
@@ -82,22 +82,23 @@ public class CustomerService {
     }
 
 //    get all transactions for an account by account Id
-//    public Accounts getTransactionbyAccId(int customerid, int accId, Transaction t) {
-//
-//        Accounts a = new Accounts();
-//
-//        try {
-//            if (getCustomer(customerid).getId() == customerid) {
-//                if (getAccId(acc).getId() == accId)) {
-//                    a.getTrans();
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.getMessage();
-//        }
-//
-//        return a;
-//    }
+    public Transaction getTransactionbyAccId(int customerid, int accId) {
+
+        Accounts a = new Accounts();
+        Transaction t = new Transaction();
+
+        try {
+            if (getCustomer(customerid).getId() == customerid) {
+                if (getAccount(accId).getId() == accId) {
+                    a.getTrans();
+                }
+            }
+        } catch (Exception e) {
+            e.getMessage();
+        }
+
+        return t;
+    }
 
     //handling the put transactions for debit - Arezki
     public double putCredit(Transaction transaction) {
@@ -153,7 +154,7 @@ public class CustomerService {
         return a;
     }
 
-    //create a new customer
+    //service to create a new customer
     public Customer createCustomer(Customer c) {
         c.setId(list.size() + 1);
         list.add(c);
@@ -161,7 +162,7 @@ public class CustomerService {
         return c;
     }
 
-    //create an account
+    //service to create an account
     public Accounts createAccount(Accounts a, int customerid) {
         Customer c = new Customer();
         try {

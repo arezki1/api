@@ -70,10 +70,10 @@ public class CustomerResource {
     //get all transactions for an account
 //    @GET
 //    @Path("{custId}/acc/{accId}")
-//    public getTransByAccount(@PathParam(int custId), @PathParam (int accId){
-//        return cService.
+//    public <List>Transaction getTransactionbyAccId(@PathParam(int custId), @PathParam (int accId){
+//        
 //    }
-//    
+    
     //create a customer
     @POST
     @Path("/createcust")
