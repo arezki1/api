@@ -22,9 +22,9 @@ public class Transaction {
     private double amount;
     private double postTransaction;
     private Date created;
-    
+     
     public Transaction(){
-       
+      
     }
      public Transaction(int transId, String type, int accountNumber,double amount,String description, double postTransaction){
         this.created=new Date();
@@ -44,7 +44,7 @@ public class Transaction {
         return transId;
     }
 
-    public void setTransId(int tranId) {
+    public void setTransId(int transId) {
         this.transId = transId;
     }
 

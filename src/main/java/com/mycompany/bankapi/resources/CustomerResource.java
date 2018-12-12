@@ -32,22 +32,22 @@ public class CustomerResource {
 
     @GET
     @Path("/customers")
-    public List<Customer> getCustomers() {
+    public List<Customer> getAllCustomers() {
          return cService.getAllCustomers();
     }
 
     //get the customer by id
     @GET
-    @Path("/{customerId}")
-    public Customer getCustomer(@PathParam("customerId") int id) {
+    @Path("/customer/{customerId}")
+    public Customer getCustomerById(@PathParam("customerId") int id) {
         return cService.getCustomer(id);
     }
     
-       
+  
    //get the transaction by id
     @GET
     @Path("{custId}/acc/{accId}/trans/{transId}")
-    public Transaction getTransaction(@PathParam("custId") int customerid,@PathParam("accId") int accountid,@PathParam("transId") int transid) {
+    public Transaction getTransactionbyId(@PathParam("custId") int customerid,@PathParam("accId") int accountid,@PathParam("transId") int transid) {
         return cService.getTransaction(customerid, accountid,transid);
               
     }
@@ -67,6 +67,13 @@ public class CustomerResource {
             return 5.7;
              
     }
+    //get all transactions for an account
+//    @GET
+//    @Path("{custId}/acc/{accId}")
+//    public getTransByAccount(@PathParam(int custId), @PathParam (int accId){
+//        return cService.
+//    }
+//    
     //create a customer
     @POST
     @Path("/createcust")
